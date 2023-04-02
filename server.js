@@ -6,7 +6,6 @@ const app = express();
 var router = express.Router();
 const path = require("path");
 /* ROUTERS */
-var CrawlerAPI = require("./routes/crawler.api.routes");
 var RestaurantsAPI = require("./routes/restaurant.api.routes");
 var TipologicheAPI = require("./routes/tipologiche.api.routes");
 
@@ -26,7 +25,6 @@ const swaggerDocument = require("./swagger.json");
 
 /* Routes */
 app.use(router);
-app.use("/api", CrawlerAPI);
 app.use("/api/restaurant", RestaurantsAPI);
 app.use("/api/tipologiche", TipologicheAPI);
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
