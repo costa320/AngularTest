@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Node js open-table CRUD",
-    "description": "My crawler",
+    "description": "My open table test api",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
