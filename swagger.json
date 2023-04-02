@@ -19,14 +19,14 @@
   "paths": {
     "/api/restaurant/getRestaurants/{skip}/{take}": {
       "parameters": [
-         {
+        {
           "name": "skip",
           "in": "path",
           "required": true,
           "description": "Skip",
           "type": "number"
         },
-         {
+        {
           "name": "take",
           "in": "path",
           "required": true,
@@ -79,11 +79,11 @@
             "example": "Zions Bancorporation"
           },
           "cuisine": {
-           "type": "array",
-           "items": {
-            "type": "string",
-            "example": "British Virgin Islands"
-           }
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "British Virgin Islands"
+            }
           },
           "phone": {
             "type": "string",
@@ -92,6 +92,58 @@
           "email": {
             "type": "string",
             "example": "badon@ZionsBancorporation.com"
+          },
+          "geolocation": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "example": "Bermuda"
+              },
+              "city": {
+                "type": "string",
+                "example": "Sioux Falls"
+              },
+              "address": {
+                "type": "string",
+                "example": "63843 Leora Circles Apt. 112"
+              }
+            }
+          },
+          "sideProducts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Table"
+                },
+                "material": {
+                  "type": "string",
+                  "example": "Wooden"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016"
+                },
+                "adjectives": {
+                  "type": "string",
+                  "example": "Luxurious"
+                },
+                "color": {
+                  "type": "string",
+                  "example": "purple"
+                }
+              }
+            }
+          },
+          "priceRange": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": ["$83.00", "$158"]
+            }
           }
         }
       }
@@ -100,8 +152,8 @@
       "required": ["arrayList"],
       "type": "array",
       "items": {
-       "type": "string",
-       "example": "British Virgin Islands"
+        "type": "string",
+        "example": "British Virgin Islands"
       }
     }
   }
