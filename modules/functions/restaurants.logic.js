@@ -41,6 +41,7 @@ const NewRestaurant = () => {
       phone: faker.phone.number('+48 91 ### ## ##'),
       priceRange: [faker.commerce.price(20, 100, 2, '$'), faker.commerce.price(100, 200, 0, '$')],
       geolocation: NewGeoLocation(),
+      open: NewOpenTime(),
     };
     /* generating new sideProducts */
     const sideProducts = Array.apply(null, Array(chance.integer({ min: 0, max: 6 }))).map(NewSideProduct);
@@ -66,6 +67,14 @@ const NewGeoLocation = () => {
     country: faker.address.country(),
     city: faker.address.cityName(),
     address: faker.address.streetAddress(true),
+  };
+};
+
+const NewOpenTime = () => {
+  let workHours = [chance.integer({ min: 6, max: 12 }), chance.integer({ min: 12, max: 24 })].sort((a, b) => a - b);
+  return {
+    closedDay: chance.weekday(),
+    workHours,
   };
 };
 
