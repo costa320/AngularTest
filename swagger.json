@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Node js crawler CRUD",
+    "title": "Node js open-table CRUD",
     "description": "My crawler",
     "license": {
       "name": "MIT",
@@ -17,88 +17,91 @@
   "produces": ["application/json"],
 
   "paths": {
-    "/api/getAllImagesByUrl/{url}": {
+    "/api/restaurant/getRestaurants/{skip}/{take}": {
       "parameters": [
-        {
-          "name": "url",
+         {
+          "name": "skip",
           "in": "path",
           "required": true,
-          "description": "url you want to use",
-          "type": "string"
+          "description": "Skip",
+          "type": "number"
+        },
+         {
+          "name": "take",
+          "in": "path",
+          "required": true,
+          "description": "Skip",
+          "type": "number"
         }
       ],
       "get": {
-        "tags": ["Crawler"],
-        "summary": "Get all images on web page, download them",
+        "tags": ["Restaurants"],
+        "summary": "Get a list of restaurants.",
         "responses": {
           "200": {
             "description": "200 response",
-            "schema": { "$ref": "#/definitions/arrDownload" }
+            "schema": { "$ref": "#/definitions/arrRestaurants" }
           }
         }
       }
     },
-    "/api/downloadImagesByList": {
-      "requestBody": {
-        "required": true,
-        "content": {
-          "application/json": {
-            "schema": { "$ref": "'#/components/schemas/arrDownload'" }
-          },
-          "application/xml": {
-            "schema": { "$ref": "'#/components/schemas/arrDownload'" }
-          },
-          "application/x-www-form-urlencoded": {
-            "schema": { "$ref": "'#/components/schemas/arrDownload'" }
-          },
-          "text/plain": { "schema": { "type": "string" } }
-        }
-      },
-
-      "parameters": [
-        {
-          "name": "arrDownload",
-          "in": "body",
-          "required": true,
-          "description": "url you want to use",
-          "schema": { "$ref": "#/definitions/arrDownload" }
-        }
-      ],
-      "post": {
-        "tags": ["Crawler"],
-        "summary": "Downloads all the images inside the list",
-        "schema": { "$ref": "#/definitions/arrDownload" },
-
+    "/api/tipologiche/getCuisinesList": {
+      "parameters": [],
+      "get": {
+        "tags": ["Tipologiche"],
+        "summary": "Get a list of cuisines.",
         "responses": {
           "200": {
             "description": "200 response",
-            "examples": {
-              "application/json": {
-                "downloaded": 3,
-                "inError": 45
-              }
-            }
+            "schema": { "$ref": "#/definitions/arrCousins" }
           }
         }
       }
     }
   },
   "definitions": {
-    "arrDownload": {
+    "arrRestaurants": {
       "required": ["arrayList"],
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "nameSpace": {
+          "id": {
             "type": "string",
-            "example": "ImageName"
+            "example": "92fb9513-73ad-5de9-a45c-769f33befcb8"
           },
-          "url": {
+          "restaurantName": {
             "type": "string",
-            "example": "https://..."
+            "example": "Pots and Ladles"
+          },
+          "companyName": {
+            "type": "string",
+            "example": "Zions Bancorporation"
+          },
+          "cuisine": {
+           "type": "array",
+           "items": {
+            "type": "string",
+            "example": "British Virgin Islands"
+           }
+          },
+          "phone": {
+            "type": "string",
+            "example": "+48 91 707 98 15"
+          },
+          "email": {
+            "type": "string",
+            "example": "badon@ZionsBancorporation.com"
           }
         }
+      }
+    },
+    "arrCousins": {
+      "required": ["arrayList"],
+      "type": "array",
+      "items": {
+       "type": "string",
+       "example": "British Virgin Islands"
       }
     }
   }
