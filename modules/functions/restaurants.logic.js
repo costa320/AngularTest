@@ -23,7 +23,7 @@ const InitialiseRestaurantsDB = async () => {
   return new Promise(async (res, rej) => {
     let tmpRestaurantsList = [];
     /* here are 33 restaurants that will be generated */
-    for (let i = 0; i < faker.Number({ min: 33, max: 1043, precision: 0 }); i++) {
+    for (let i = 0; i < 143; i++) {
       tmpRestaurantsList.push(await NewRestaurant());
     }
     RestaurantsDB = tmpRestaurantsList;
